@@ -1,0 +1,33 @@
+# Brunno Camargo Ramos
+
+> Desenvolvedor Back-End .NET / C# na Exato Digital, com sólida experiência em otimização e manutenção de sistemas robustos que suportam milhões de requisições.
+
+## Sobre
+
+Desenvolvedor Back-End C# / .NET com sólida experiência em otimização e manutenção de sistemas robustos. Apaixonado por tecnologia e em constante evolução técnica. Fora do código, é saxofonista (não profissional) e cristão — a música acompanha sua jornada profissional.
+
+## Trajetória profissional
+
+- Iniciou sua carreira criando e mantendo consultas SQL complexas para geração de relatórios fiscais e contábeis (era pré-GPT).
+- Migrou para desenvolvimento de software em sistemas cliente/servidor com .NET Framework, onde conheceu C# — linguagem que segue utilizando até hoje.
+- Posteriormente passou a atuar com desenvolvimento web, adotando Vue.js no front-end e .NET no back-end. Confirmou no processo que é backend de coração.
+- Atualmente é Desenvolvedor Back-End .NET na [Exato Digital](https://exato.digital/), em ambiente que suporta milhões de requisições de players importantes do mercado.
+- Utiliza ativamente IAs para acelerar tarefas repetitivas e se concentrar em problemas mais profundos.
+
+## Formação acadêmica
+
+- **Análise e Desenvolvimento de Sistemas** — Universidade Paranaense (Unipar)
+
+## Stack principal
+
+- C# / .NET / .NET Framework
+- SQL
+- Vue.js
+- APIs e sistemas distribuídos de alta requisição
+- Integração com IAs no fluxo de desenvolvimento
+
+## Contato
+
+- Site: https://brunnocamargoramos.github.io/
+- GitHub: https://github.com/BrunnoC
+- LinkedIn: https://www.linkedin.com/in/brunno-camargo-ramos/
