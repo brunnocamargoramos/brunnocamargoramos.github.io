@@ -14,4 +14,39 @@
             localStorage.setItem('theme', next);
         });
     })();
+
+    (function() {
+        var navToggle = document.getElementById('nav-toggle');
+        var navLinks = document.getElementById('nav-links');
+        if (!navToggle || !navLinks) return;
+
+        function closeMenu() {
+            navLinks.classList.remove('is-open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Abrir menu');
+        }
+
+        navToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var open = navLinks.classList.toggle('is-open');
+            navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            navToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+        });
+
+        navLinks.querySelectorAll('a').forEach(function(a) {
+            a.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!navLinks.classList.contains('is-open')) return;
+            if (navLinks.contains(e.target) || navToggle.contains(e.target)) return;
+            closeMenu();
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 640 && navLinks.classList.contains('is-open')) {
+                closeMenu();
+            }
+        });
+    })();
 </script>

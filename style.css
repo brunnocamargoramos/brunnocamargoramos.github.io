@@ -34,6 +34,8 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
@@ -43,10 +45,16 @@ body {
     line-height: 1.7;
     font-size: 15.5px;
     min-height: 100vh;
+    overflow-wrap: break-word;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+img, svg, video {
+    max-width: 100%;
+    height: auto;
 }
 
 .mono {
@@ -83,12 +91,13 @@ a:hover {
     gap: 1rem;
 }
 
-.theme-toggle {
+.theme-toggle,
+.nav-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
+    width: 38px;
+    height: 38px;
     padding: 0;
     background: transparent;
     border: 1px solid var(--border);
@@ -96,12 +105,22 @@ a:hover {
     color: var(--text-muted);
     cursor: pointer;
     transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.theme-toggle:hover {
-    color: var(--text);
-    border-color: var(--border-strong);
-    background: var(--surface);
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+}
+
+@media (hover: hover) {
+    .theme-toggle:hover,
+    .nav-toggle:hover {
+        color: var(--text);
+        border-color: var(--border-strong);
+        background: var(--surface);
+    }
 }
 
 .theme-toggle .icon {
@@ -150,8 +169,32 @@ a:hover {
     transition: color 0.15s ease;
 }
 
-.nav-links a:hover {
-    color: var(--text);
+@media (hover: hover) {
+    .nav-links a:hover {
+        color: var(--text);
+    }
+}
+
+.hamburger-bar {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: currentColor;
+    border-radius: 2px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger-bar:nth-child(1) {
+    transform: translateY(5.5px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger-bar:nth-child(3) {
+    transform: translateY(-5.5px) rotate(-45deg);
 }
 
 /* ---------- Hero ---------- */
@@ -273,13 +316,19 @@ section h2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 0.75rem;
     padding: 0.95rem 0.25rem;
     color: var(--text);
     transition: padding 0.2s ease;
 }
 
-.links-list a:hover {
-    padding-left: 0.6rem;
+@media (hover: hover) {
+    .links-list a:hover {
+        padding-left: 0.6rem;
+    }
+    .links-list a:hover .link-value {
+        color: var(--accent);
+    }
 }
 
 .link-label {
@@ -291,10 +340,8 @@ section h2 {
     color: var(--text-muted);
     font-size: 0.85rem;
     transition: color 0.15s ease;
-}
-
-.links-list a:hover .link-value {
-    color: var(--accent);
+    word-break: break-all;
+    text-align: right;
 }
 
 /* ---------- Blog: category filters ---------- */
@@ -356,8 +403,13 @@ section h2 {
     transition: padding 0.2s ease;
 }
 
-.post-list a:hover {
-    padding-left: 0.6rem;
+@media (hover: hover) {
+    .post-list a:hover {
+        padding-left: 0.6rem;
+    }
+    .post-list a:hover h2 {
+        color: var(--accent);
+    }
 }
 
 .post-list-meta {
@@ -392,10 +444,6 @@ section h2 {
     margin-top: 0.3rem;
     color: var(--text);
     transition: color 0.15s ease;
-}
-
-.post-list a:hover h2 {
-    color: var(--accent);
 }
 
 .post-list p {
@@ -475,6 +523,15 @@ section h2 {
     color: var(--text);
     font-size: 1rem;
     line-height: 1.8;
+    overflow-wrap: break-word;
+}
+
+.post-content table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
 }
 
 .post-content p {
@@ -599,45 +656,122 @@ footer {
 /* ---------- Responsive ---------- */
 @media (max-width: 720px) {
     .hero {
-        padding: 3.5rem 1.5rem 2.5rem;
+        padding: 3.5rem 1.25rem 2.5rem;
+    }
+
+    section[id],
+    .post {
+        margin: 3rem auto;
+        padding: 0 1.25rem;
+    }
+}
+
+/* Mobile: hamburger menu */
+@media (max-width: 640px) {
+    .nav-inner {
+        padding: 0.75rem 1.25rem;
+        position: relative;
+    }
+
+    .nav-right {
+        gap: 0.5rem;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
     }
 
     .nav-links {
-        gap: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.25s ease, opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .nav-links.is-open {
+        max-height: 80vh;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links li {
+        border-top: 1px solid var(--border);
     }
 
     .nav-links a {
-        font-size: 0.82rem;
-    }
-
-    section[id] {
-        margin: 3rem auto;
+        display: block;
+        padding: 0.95rem 1.5rem;
+        font-size: 0.95rem;
+        color: var(--text);
     }
 }
 
 @media (max-width: 480px) {
-    .nav-inner {
-        padding: 0.75rem 1.25rem;
+    body {
+        font-size: 15px;
     }
 
-    .nav-right {
-        gap: 0.6rem;
+    .hero {
+        padding: 2.75rem 1.25rem 2rem;
     }
 
-    .nav-links {
-        gap: 0.75rem;
+    .hero-description {
+        font-size: 0.95rem;
     }
 
-    .nav-links a {
-        font-size: 0.78rem;
+    section[id],
+    .post {
+        margin: 2.5rem auto;
+        padding: 0 1.25rem;
     }
 
     .logo {
-        font-size: 0.82rem;
+        font-size: 0.85rem;
     }
 
-    .theme-toggle {
-        width: 30px;
-        height: 30px;
+    .theme-toggle,
+    .nav-toggle {
+        width: 36px;
+        height: 36px;
+    }
+
+    .post-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1.25rem;
+    }
+
+    .post-content pre {
+        padding: 0.85rem 1rem;
+        font-size: 0.82rem;
+        border-radius: 6px;
+    }
+
+    .post-meta,
+    .post-list-meta {
+        flex-wrap: wrap;
+    }
+
+    .links-list a {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+
+    .link-value {
+        text-align: left;
+    }
+
+    footer {
+        padding: 2rem 1.25rem;
     }
 }
