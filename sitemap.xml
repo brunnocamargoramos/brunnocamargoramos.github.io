@@ -6,4 +6,22 @@
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
+    <url>
+        <loc>https://brunnocamargoramos.github.io/blog/</loc>
+        <lastmod>2026-05-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://brunnocamargoramos.github.io/blog/tecnologia/</loc>
+        <lastmod>2026-05-04</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://brunnocamargoramos.github.io/blog/refatorando-o-meu-site-com-claude-code/</loc>
+        <lastmod>2026-05-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
 </urlset>

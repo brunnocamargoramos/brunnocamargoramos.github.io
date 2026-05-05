@@ -29,5 +29,5 @@ Desenvolvedor Back-End C# / .NET com sólida experiência em otimização e manu
 ## Contato
 
 - Site: https://brunnocamargoramos.github.io/
-- GitHub: https://github.com/BrunnoC
+- GitHub: https://github.com/brunnocamargoramos
 - LinkedIn: https://www.linkedin.com/in/brunno-camargo-ramos/

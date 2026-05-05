@@ -1,0 +1,22 @@
+title: Brunno Camargo Ramos
+description: "Desenvolvedor Back-End .NET / C# na Exato Digital, com sólida experiência em otimização e manutenção de sistemas robustos que suportam milhões de requisições."
+author: Brunno Camargo Ramos
+url: "https://brunnocamargoramos.github.io"
+baseurl: ""
+lang: pt-br
+
+permalink: /blog/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules

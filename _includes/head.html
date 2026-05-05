@@ -1,0 +1,113 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="_d7lV3Au5uXAhLCAqnezDAlO2MjOKK2RKw8jrN8AO2I" />
+
+<link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
+<link rel="mask-icon" href="{{ '/favicon.svg' | relative_url }}" color="#0a0a0a">
+<meta name="theme-color" content="#0a0a0a">
+
+<!-- Theme: aplica antes do paint para evitar flash -->
+<script>
+(function() {
+    var stored = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = stored || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
+
+{%- assign page_title = page.title | default: site.title -%}
+{%- assign page_description = page.description | default: site.description -%}
+
+{%- if page.url == '/' -%}
+<title>{{ site.title }} — Desenvolvedor Back-End .NET</title>
+{%- else -%}
+<title>{{ page_title }} — {{ site.title }}</title>
+{%- endif %}
+
+<meta name="description" content="{{ page_description }}">
+<meta name="author" content="{{ site.author }}">
+<meta name="keywords" content="{{ page.keywords | default: 'Brunno Camargo, Brunno Camargo Ramos, desenvolvedor backend, .NET, C#, Vue.js, SQL, Exato Digital, software developer, backend developer' }}">
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+{%- assign og_type = 'website' -%}
+{%- if page.url == '/' -%}{%- assign og_type = 'profile' -%}{%- endif -%}
+{%- if page.layout == 'post' -%}{%- assign og_type = 'article' -%}{%- endif -%}
+
+<!-- Open Graph -->
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_description }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:locale" content="pt_BR">
+{%- if page.layout == 'post' %}
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+<meta property="article:author" content="{{ site.author }}">
+{%- endif %}
+{%- if page.url == '/' %}
+<meta property="profile:first_name" content="Brunno">
+<meta property="profile:last_name" content="Camargo Ramos">
+<meta property="profile:username" content="brunnocamargoramos">
+{%- endif %}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_description }}">
+
+{%- if page.url == '/' %}
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Brunno Camargo Ramos",
+    "givenName": "Brunno",
+    "familyName": "Camargo Ramos",
+    "jobTitle": "Desenvolvedor Back-End .NET",
+    "description": "Desenvolvedor Back-End C# / .NET com sólida experiência em otimização e manutenção de sistemas robustos que suportam milhões de requisições.",
+    "url": "https://brunnocamargoramos.github.io/",
+    "worksFor": {
+        "@type": "Organization",
+        "name": "Exato Digital",
+        "url": "https://exato.digital/"
+    },
+    "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Universidade Paranaense",
+        "alternateName": "Unipar"
+    },
+    "knowsAbout": [
+        ".NET",
+        "C#",
+        "SQL",
+        "Vue.js",
+        "Desenvolvimento Back-End",
+        "APIs",
+        "Otimização de sistemas"
+    ],
+    "knowsLanguage": ["pt-BR"],
+    "sameAs": [
+        "https://github.com/brunnocamargoramos",
+        "https://www.linkedin.com/in/brunno-camargo-ramos/"
+    ]
+}
+</script>
+{%- endif %}
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JBGT644N5F"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-JBGT644N5F');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/style.css' | relative_url }}">

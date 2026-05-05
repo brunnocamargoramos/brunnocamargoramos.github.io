@@ -1,0 +1,16 @@
+---
+layout: default
+title: Blog
+description: "Anotações sobre tecnologia, livros, filmes, música e vida — por Brunno Camargo Ramos."
+permalink: /blog/
+---
+<section class="hero">
+    <span class="eyebrow">Blog</span>
+    <h1>Anotações</h1>
+    <p class="hero-description">Reflexões e aprendizados sobre tecnologia, livros, filmes, música e vida.</p>
+</section>
+
+<section id="posts">
+    {% include category-filters.html %}
+    {% include posts-list.html %}
+</section>

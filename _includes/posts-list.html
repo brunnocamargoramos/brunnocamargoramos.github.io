@@ -1,0 +1,31 @@
+{%- if include.category -%}
+    {%- assign posts = site.categories[include.category] -%}
+{%- else -%}
+    {%- assign posts = site.posts -%}
+{%- endif -%}
+
+{% if posts.size > 0 %}
+<ul class="post-list">
+    {%- for post in posts %}
+    <li>
+        <a href="{{ post.url | relative_url }}">
+            <div class="post-list-meta">
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d/%m/%Y" }}</time>
+                {%- if post.category -%}
+                {%- assign cat_data = site.data.categories | where: 'slug', post.category | first -%}
+                {%- if cat_data %}
+                <span class="post-category">{{ cat_data.label }}</span>
+                {%- endif -%}
+                {%- endif %}
+            </div>
+            <h2>{{ post.title }}</h2>
+            {%- if post.description %}
+            <p>{{ post.description }}</p>
+            {%- endif %}
+        </a>
+    </li>
+    {%- endfor %}
+</ul>
+{% else %}
+<p class="post-empty">Em breve — posts nessa categoria.</p>
+{% endif %}

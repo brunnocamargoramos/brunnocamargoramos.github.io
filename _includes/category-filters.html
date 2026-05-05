@@ -1,0 +1,6 @@
+<nav class="category-filters" aria-label="Filtrar por categoria">
+    <a href="{{ '/blog/' | relative_url }}" class="category-chip{% if page.url == '/blog/' %} is-active{% endif %}">Tudo</a>
+    {%- for cat in site.data.categories %}
+    <a href="{{ '/blog/' | append: cat.slug | append: '/' | relative_url }}" class="category-chip{% if page.category == cat.slug %} is-active{% endif %}">{{ cat.label }}</a>
+    {%- endfor %}
+</nav>

@@ -297,6 +297,295 @@ section h2 {
     color: var(--accent);
 }
 
+/* ---------- Blog: category filters ---------- */
+.category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.category-chip {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.category-chip:hover {
+    color: var(--text);
+    border-color: var(--border-strong);
+    background: var(--surface);
+}
+
+.category-chip.is-active {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+.category-chip.is-active:hover {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+/* ---------- Blog: post list ---------- */
+.post-list {
+    list-style: none;
+    border-top: 1px solid var(--border);
+}
+
+.post-list li {
+    border-bottom: 1px solid var(--border);
+}
+
+.post-list a {
+    display: block;
+    padding: 1.4rem 0.25rem;
+    color: var(--text);
+    text-decoration: none;
+    transition: padding 0.2s ease;
+}
+
+.post-list a:hover {
+    padding-left: 0.6rem;
+}
+
+.post-list-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.3rem;
+}
+
+.post-list time {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--text-subtle);
+}
+
+.post-list .post-category {
+    display: inline-block;
+    padding: 0.1rem 0.55rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.7rem;
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+}
+
+.post-list h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 0.3rem;
+    color: var(--text);
+    transition: color 0.15s ease;
+}
+
+.post-list a:hover h2 {
+    color: var(--accent);
+}
+
+.post-list p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-top: 0.4rem;
+    line-height: 1.6;
+}
+
+.post-empty {
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+}
+
+/* ---------- Blog: single post ---------- */
+.post {
+    max-width: var(--maxw);
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+}
+
+.post-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+}
+
+.post-meta time {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.8rem;
+    color: var(--text-subtle);
+}
+
+.post-category-badge a {
+    display: inline-block;
+    padding: 0.18rem 0.6rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.post-category-badge a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.post-header h1 {
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+}
+
+.post-lede {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.post-content {
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.post-content p {
+    margin-bottom: 1.25rem;
+}
+
+.post-content h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.015em;
+    color: var(--text);
+}
+
+.post-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+}
+
+.post-content a {
+    color: var(--accent);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
+}
+
+.post-content a:hover {
+    border-bottom-color: var(--accent);
+}
+
+.post-content strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.post-content code {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.88em;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    color: var(--text);
+}
+
+.post-content pre {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+.post-content pre code {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.post-content ul,
+.post-content ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.4rem;
+}
+
+.post-content li {
+    margin-bottom: 0.4rem;
+}
+
+.post-content blockquote {
+    border-left: 3px solid var(--border-strong);
+    padding-left: 1rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 1.5rem 0;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.post-content hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
+}
+
+.post-back {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.post-back a {
+    color: var(--text-muted);
+}
+
+.post-back a:hover {
+    color: var(--accent);
+}
+
 /* ---------- Footer ---------- */
 footer {
     text-align: center;

@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<article class="post">
+    <header class="post-header">
+        <div class="post-meta">
+            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d/%m/%Y" }}</time>
+            {%- if page.category -%}
+            {%- assign cat_data = site.data.categories | where: 'slug', page.category | first -%}
+            {%- if cat_data %}
+            <span class="post-category-badge">
+                <a href="{{ '/blog/' | append: cat_data.slug | append: '/' | relative_url }}">{{ cat_data.label }}</a>
+            </span>
+            {%- endif -%}
+            {%- endif %}
+        </div>
+        <h1>{{ page.title }}</h1>
+        {%- if page.description %}
+        <p class="post-lede">{{ page.description }}</p>
+        {%- endif %}
+    </header>
+    <div class="post-content">
+        {{ content }}
+    </div>
+    <div class="post-back">
+        <a href="{{ '/blog/' | relative_url }}">← Voltar para o blog</a>
+    </div>
+</article>
